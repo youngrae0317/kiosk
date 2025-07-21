@@ -2,6 +2,7 @@ package org.example.lv4;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Kiosk {
     // MenuItem 리스트 필드 및 입력받을 Scanner 객체
@@ -38,6 +39,10 @@ public class Kiosk {
                     Menu selectedMenu = this.menus.get(menuselect - 1);
                     List<MenuItem> menuItems = selectedMenu.getMenuItems();
 
+                    // 헤더 출력하기
+                    System.out.println("\n[ " + selectedMenu.getName().toUpperCase() + " MENU ] ");
+
+                    // 선택한 메뉴의 아이템 출력하기
                     for (int i = 0; i < selectedMenu.getMenuItems().size(); i++) {
                         System.out.println((i + 1) + ". " + menuItems.get(i).getName() + "   | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getDescription());
                     }
@@ -46,16 +51,21 @@ public class Kiosk {
 
                     int selectedMenuItem =  sc.nextInt();
                     if (selectedMenuItem == 0) {
-                        break;
+                        continue;
                     } else if (selectedMenuItem > 0 && selectedMenuItem <= menuItems.size()) {
                         MenuItem selectedItem = menuItems.get(selectedMenuItem - 1);
                         System.out.println("선택한 메뉴: " + selectedItem.getName() + "   | W " + selectedItem.getPrice() + " | " + selectedItem.getDescription() + "\n");
+                    } else {
+                        throw new IllegalArgumentException("숫자를 잘못 선택 하셨습니다.\n");
                     }
                 } else {
                     throw new IllegalArgumentException("숫자를 잘못 선택 하셨습니다.\n");
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("숫자로 입력하세요 !! \n");
+                sc.next();
             }
         }
     }
