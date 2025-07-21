@@ -2,10 +2,10 @@ package org.example.lv2;
 
 public class MenuItem {
     private String name;
-    private int price;
+    private double price;
     private String description;
 
-    public MenuItem(String name, int price, String description) {
+    public MenuItem(String name, double price, String description) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -16,9 +16,10 @@ public class MenuItem {
         return name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
+
     public String getDescription() {
         return description;
     }
@@ -28,7 +29,7 @@ public class MenuItem {
         this.name = name;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
