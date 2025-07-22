@@ -16,17 +16,26 @@ public class Main {
         List<MenuItem> drinkItems = new ArrayList<>();
         drinkItems.add(new MenuItem("콜라", 1.8, "일반 코카콜라"));
         drinkItems.add(new MenuItem("제로콜라", 1.8, "제로 코카콜라"));
-        drinkItems.add(new MenuItem("사이다", 6.9, "사이다"));
-        drinkItems.add(new MenuItem("환타(파인)", 5.4, "파인애플맛 환타"));
+        drinkItems.add(new MenuItem("사이다", 1.8, "사이다"));
+        drinkItems.add(new MenuItem("환타(파인)", 1.8, "파인애플맛 환타"));
+
+        // 디저트 메뉴 아이템 리스트 생성 및 추가
+        List<MenuItem> dessertItems = new ArrayList<>();
+        dessertItems.add(new MenuItem("감자튀김", 1.5, "감자튀김"));
+        dessertItems.add(new MenuItem("아이스크림콘", 0.8, "아이스크림콘"));
+        dessertItems.add(new MenuItem("초코콘", 0.9, "초코가 올라간 아이스크림콘"));
+        dessertItems.add(new MenuItem("애플파이", 1.2, "사과맛 파이"));
 
         // 메뉴 객체 생성
         Menu burgerMenu = new Menu("Burgers", burgerItems);
         Menu drinkMenu = new Menu("Drinks", drinkItems);
+        Menu dessertMenu = new Menu("Dessert", dessertItems);
 
         // 메뉴 리스트 만들기
         List<Menu> menuList = new ArrayList<>();
         menuList.add(burgerMenu);
         menuList.add(drinkMenu);
+        menuList.add(dessertMenu);
 
 
         // Kiosk 객체 생성 후 menuItems의 값들을 넘겨주고 start() 메서드 실행
