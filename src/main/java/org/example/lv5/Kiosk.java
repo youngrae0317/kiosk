@@ -1,4 +1,4 @@
-package org.example.lv4;
+package org.example.lv5;
 
 import java.util.List;
 import java.util.Scanner;

@@ -1,9 +1,9 @@
-package org.example.lv4;
+package org.example.lv5;
 
 import java.util.List;
 
 public class Menu {
-    public String name;
+    public final String name;
     private final List<MenuItem> menuItems;
 
     public Menu(String name, List<MenuItem> menuItems) {
@@ -20,8 +20,5 @@ public class Menu {
         return menuItems;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }
