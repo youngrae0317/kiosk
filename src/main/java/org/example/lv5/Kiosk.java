@@ -19,7 +19,7 @@ public class Kiosk {
         // 반복문
         while (true) {
             try {
-                System.out.println("[ MAIN MENU ]");
+                System.out.println("\n[ MAIN MENU ]");
                 // 리스트 별 아이템 출력 (각 메뉴 출력)
                 for (int i = 0; i < menus.size(); i++) {
                     System.out.println((i + 1) + ". " + menus.get(i).getName());
@@ -39,32 +39,42 @@ public class Kiosk {
                     Menu selectedMenu = this.menus.get(menuselect - 1);
                     List<MenuItem> menuItems = selectedMenu.getMenuItems();
 
-                    // 헤더 출력하기
-                    System.out.println("\n[ " + selectedMenu.getName().toUpperCase() + " MENU ] ");
+                    // 서브 메뉴를 위한 새로운 반복문
+                    while (true) {
+                        try { // 서브 메뉴의 내부 try-catch
+                            // 헤더 출력하기
+                            System.out.println("\n[ " + selectedMenu.getName().toUpperCase() + " MENU ] ");
 
-                    // 선택한 메뉴의 아이템 출력하기
-                    for (int i = 0; i < selectedMenu.getMenuItems().size(); i++) {
-                        System.out.println((i + 1) + ". " + menuItems.get(i).getName() + "   | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getDescription());
-                    }
-                    System.out.println("0. 뒤로가기");
-                    System.out.print("메뉴를 고르세요 : ");
+                            // 선택한 메뉴의 아이템 출력하기
+                            for (int i = 0; i < selectedMenu.getMenuItems().size(); i++) {
+                                System.out.println((i + 1) + ". " + menuItems.get(i).getName() + "   | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getDescription());
+                            }
+                            System.out.println("0. 뒤로가기");
+                            System.out.print("메뉴를 고르세요 : ");
 
-                    int selectedMenuItem =  sc.nextInt();
-                    if (selectedMenuItem == 0) {
-                        continue;
-                    } else if (selectedMenuItem > 0 && selectedMenuItem <= menuItems.size()) {
-                        MenuItem selectedItem = menuItems.get(selectedMenuItem - 1);
-                        System.out.println("선택한 메뉴: " + selectedItem.getName() + "   | W " + selectedItem.getPrice() + " | " + selectedItem.getDescription() + "\n");
-                    } else {
-                        throw new IllegalArgumentException("숫자를 잘못 선택 하셨습니다.\n");
+                            int selectedMenuItem = sc.nextInt();
+                            if (selectedMenuItem == 0) {
+                                break; // 내부 루프를 탈출해야 하므로 continue가 아닌 break 사용
+                            } else if (selectedMenuItem > 0 && selectedMenuItem <= menuItems.size()) {
+                                MenuItem selectedItem = menuItems.get(selectedMenuItem - 1);
+                                System.out.println("선택한 메뉴: " + selectedItem.getName() + "   | W " + selectedItem.getPrice() + " | " + selectedItem.getDescription());
+                            } else {
+                                throw new IllegalArgumentException("숫자를 잘못 선택 하셨습니다.");
+                            }
+                        } catch (IllegalArgumentException e) { // 서브 메뉴의 예외 처리 (숫자 범위 초과)
+                            System.out.println(e.getMessage());
+                        } catch (InputMismatchException e) { // 숫자가 아닌 다른 문자 입력 시 예외 처리
+                            System.out.println("숫자로 입력하세요 !! ");
+                            sc.next(); // 버퍼 비우기
+                        }
                     }
                 } else {
-                    throw new IllegalArgumentException("숫자를 잘못 선택 하셨습니다.\n");
+                    throw new IllegalArgumentException("숫자를 잘못 선택 하셨습니다.");
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             } catch (InputMismatchException e) {
-                System.out.println("숫자로 입력하세요 !! \n");
+                System.out.println("숫자로 입력하세요 !! ");
                 sc.next();
             }
         }
