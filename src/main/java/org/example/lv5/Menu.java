@@ -3,7 +3,7 @@ package org.example.lv5;
 import java.util.List;
 
 public class Menu {
-    public final String name;
+    private final String name;
     private final List<MenuItem> menuItems;
 
     public Menu(String name, List<MenuItem> menuItems) {
@@ -19,6 +19,5 @@ public class Menu {
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
-
 
 }

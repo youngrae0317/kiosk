@@ -1,8 +1,8 @@
 package org.example.lv5;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class Kiosk {
     // MenuItem 리스트 필드 및 입력받을 Scanner 객체
