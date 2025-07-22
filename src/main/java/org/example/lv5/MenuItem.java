@@ -1,9 +1,9 @@
-package org.example.lv4;
+package org.example.lv5;
 
 public class MenuItem {
-    private String name;
-    private double price;
-    private String description;
+    private final String name;
+    private final double price;
+    private final String description;
 
     public MenuItem(String name, double price, String description) {
         this.name = name;
@@ -24,16 +24,4 @@ public class MenuItem {
         return description;
     }
 
-    // Setter 메서드
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
