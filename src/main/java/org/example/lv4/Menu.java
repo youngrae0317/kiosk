@@ -20,4 +20,8 @@ public class Menu {
         return menuItems;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
