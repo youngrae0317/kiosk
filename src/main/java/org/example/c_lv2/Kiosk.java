@@ -89,6 +89,7 @@ public class Kiosk {
                             sc.next(); // 버퍼 비우기
                         }
                     }
+                    // 4번 메뉴 ( 장바구니 확인 후 주문)
                 } else if (menuselect == 4 && !this.cart.isEmpty()) {
                     System.out.println("\n아래와 같이 주문 하시겠습니까?\n");
 
@@ -103,7 +104,7 @@ public class Kiosk {
                     System.out.println("W " + this.cart.getTotalPrice() + "\n");
 
                     // 사용자 확인 (최종적으로 주문할 지, 메뉴판으로 돌아갈 지에 대한 선택)
-                    System.out.println("1. 주문        2. 메뉴판");
+                    System.out.println("1. 주문        2. 메뉴판        3. 메뉴 삭제하기");
                     int finalSelect = sc.nextInt();
 
                     if (finalSelect == 1) {
@@ -143,8 +144,17 @@ public class Kiosk {
                         this.cart.clearCart(); // 장바구니 비우기
                     } else if (finalSelect == 2) { // 메뉴판으로 돌아갈 시 반복문 처음으로 돌아감.
                         continue;
+                    } else if (finalSelect == 3) {
+                        System.out.println("\n삭제할 메뉴의 이름을 정확하게 적어주세요.");
+                        String deleteName = sc.next();
+                        cart.removeItem(deleteName);
+                        System.out.println(deleteName + "이(가) 삭제되었습니다. 현재 장바구니 내용은 아래와 같습니다.");
+                        for (int i = 0; i < cart.getItems().size(); i++) {
+                            System.out.println(cart.getItems().get(i).getName() + "   | W " + cart.getItems().get(i).getPrice() + " | " + cart.getItems().get(i).getDescription());
+                        }
                     }
 
+                    // 5번 메뉴 (진행중인 주문 취소, 카트 비우기)
                 } else if (menuselect == 5 && !this.cart.isEmpty()) {
                     System.out.println("\n진행하던 주문을 취소하시겠습니까?");
                     System.out.println("1. 확인        2. 취소");
