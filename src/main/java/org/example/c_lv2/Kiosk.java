@@ -22,10 +22,11 @@ public class Kiosk {
         while (true) {
             try {
                 System.out.println("\n[ MAIN MENU ]");
-                // 리스트 별 아이템 출력 (각 메뉴 출력)
-                for (int i = 0; i < menus.size(); i++) {
-                    System.out.println((i + 1) + ". " + menus.get(i).getName());
-                }
+                // 리스트 별 아이템 출력 (각 메뉴 출력), IntStream을 이용
+                IntStream.range(0, menus.size()).forEach(
+                        i -> {
+                            System.out.println((i + 1) + ". " + menus.get(i).getName()); // i를 사용해 메뉴 번호와 메뉴 이름 출력
+                        });
                 System.out.println("0. 종료      | 종료");
 
                 // 장바구니가 비어있지 않을 때, 즉 장바구니 리스트에 아이템이 있을 경우 출력
