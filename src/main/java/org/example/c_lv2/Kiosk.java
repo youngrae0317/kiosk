@@ -3,6 +3,7 @@ package org.example.c_lv2;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Kiosk {
     // MenuItem 리스트 필드 및 입력받을 Scanner 객체와 장바구니 객체
@@ -55,10 +56,11 @@ public class Kiosk {
                             // 헤더 출력하기
                             System.out.println("\n[ " + selectedMenu.getName().toUpperCase() + " MENU ] ");
 
-                            // 선택한 메뉴의 아이템 출력하기
-                            for (int i = 0; i < selectedMenu.getMenuItems().size(); i++) {
-                                System.out.println((i + 1) + ". " + menuItems.get(i).getName() + "   | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getDescription());
-                            }
+                            // 선택한 메뉴의 아이템 출력하기 (IntStrea.range() 를 이용하여 리스트의 인덱스를 스트림으로 만들어 메뉴 번호, 메뉴 출력)
+                            IntStream.range(0, selectedMenu.getMenuItems().size()).forEach(i->{
+                                System.out.println((i + 1) + "." + menuItems.get(i).getName() + "   | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getDescription());
+                            });
+
                             System.out.println("0. 뒤로가기");
                             System.out.print("메뉴를 고르세요 : ");
 
