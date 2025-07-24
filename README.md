@@ -66,7 +66,6 @@
           - `stream().filter().findFirst().ifPresent()`를 활용하여 장바구니에서 특정 아이템 입력 시 그 아이템이 제거되도록 구현하였습니다.
       - **메서드 분리**: `Kiosk` 클래스의 `start()` 메서드가 너무 복잡해보이고 가독성이 떨어져보여 `displayMainMenu()`, `SubMenu()` 등 여러 개의 메서드로 분리하여 가독성을 높히도록 하였습니다.
 
-\<br\>
 
 -----
 
@@ -79,4 +78,3 @@
       - `while`, `if-else`, `switch`, `try-catch-finally`
       - `Enum`, `Lambda`, `Stream`
 
-\<br\>
